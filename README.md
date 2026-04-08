@@ -19,11 +19,15 @@ A sleek and powerful **Scientific Calculator** built with JavaScript. Designed f
 
 ---
 
-## 🖥️ Preview
+## 🖥️ Live Demo
 
 <p align="center">
-  <img src="./image.png" alt="App Preview" width="400"/>
+  <a href="https://dex-calculator.netlify.app" target="_blank">
+    <img src="./image.png" alt="App Preview" width="400"/>
+  </a>
 </p>
+
+**Try it live:** [dex-calculator.netlify.app](https://dex-calculator.netlify.app)
 
 ---
 
@@ -132,5 +136,6 @@ This project is open-source and available under the **MIT License**.
 ## ⭐ Support
 
 If you like this project, give it a ⭐ on GitHub!
+Check out the live version: [dex-calculator.netlify.app](https://dex-calculator.netlify.app)  
 
 ---
