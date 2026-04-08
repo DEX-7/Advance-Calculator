@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.calculator-container {
+    width: 100%;
+    max-width: 380px;
+    height: 100vh;
+    max-height: 800px;
+    background: #ffffff;
+    border-radius: 40px;
+    box-shadow: 
+        20px 20px 40px rgba(0, 0, 0, 0.1),
+        -10px -10px 20px rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.mode-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-bottom: 12px; 
+    padding-right: 5px;
+}
+
+.display {
+    background: #f8f9fa;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 12px; 
+    box-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.05),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+}
+
+.mode-label {
+    color: #6c757d;
+    transition: color 0.3s ease;
+}
+
+.mode-label.active {
+    color: #495057;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 18px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e9ecef;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 
+        inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px; 
+    width: 12px;
+    left: 3px;
+    bottom: 3px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 50%;
+    box-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.2),
+        -1px -1px 2px rgba(255, 255, 255, 0.8);
+}
+
+input:checked + .slider {
+    background-color: #d1ecf1;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.expression {
+    min-height: 28px;
+    font-size: 24px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 12px;
+
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: right;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.expression::-webkit-scrollbar {
+    display: none;
+}
+
+.result {
+    font-size: 42px;
+    font-weight: 600;
+    min-height: 52px;
+    color: #2c3e50;
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    text-align: right;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.result::-webkit-scrollbar {
+    display: none;
+}
+
+.buttons {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    padding: 0;
+}
+
+button {
+    border: none;
+    background: #e9ecef;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    height: 60px;
+    color: #495057;
+    box-shadow: 
+        4px 4px 8px rgba(0, 0, 0, 0.1),
+        -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.1),
+        -1px -1px 2px rgba(255, 255, 255, 0.7);
+}
+
+button.function {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+button.function:active {
+    background: #bee5eb;
+}
+
+button.operator {
+    background: #fff3cd;
+    color: #856404;
+}
+
+button.operator:active {
+    background: #ffeaa7;
+}
+
+button.equals {
+    background: #d4edda;
+    color: #155724;
+}
+
+button.equals:active {
+    background: #c3e6cb;
+}
+
+button.clear {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+button.clear:active {
+    background: #f5c6cb;
+}
+
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
+    .calculator-container {
+        border-radius: 0;
+        max-width: 100%;
+        height: 100vh;
+        padding: 16px;
+    }
+    
+    button {
+        font-size: 22px;
+        height: 56px;
+        border-radius: 14px;
+    }
+    
+    .result {
+        font-size: 38px;
+    }
+    
+    .display {
+        padding: 20px;
+        margin-bottom: 16px;
+    }
+}
+
+/* Landscape mode */
+@media (max-height: 500px) {
+    .calculator-container {
+        flex-direction: row;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+    
+    .display {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .buttons {
+        width: 60%;
+    }
+}
